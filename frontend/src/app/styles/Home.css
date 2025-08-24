@@ -1,0 +1,44 @@
+/* Home container */
+.home-container {
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card */
+.home-card {
+  max-width: 700px;
+  width: 100%;
+  padding: 32px;
+}
+
+/* Main title */
+.home-title {
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Subtitle */
+.home-subtitle {
+  font-size: 18px;
+  text-align: center;
+}
+
+/* List of features */
+.home-list {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding-left: 0;
+}
+
+.home-list .MuiListItem-root {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Footer note */
+.home-footer {
+  font-size: 14px;
+  text-align: center;
+  color: #555;
+}

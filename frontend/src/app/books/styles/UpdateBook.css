@@ -1,0 +1,39 @@
+.update-form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 16px;
+}
+
+.update-form-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.update-error-alert {
+  margin-bottom: 16px;
+}
+
+.update-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-input {
+  margin-bottom: 16px;
+}
+
+.update-button {
+  margin-top: 16px;
+  padding: 12px 0;
+  font-weight: bold;
+}
+
+/* Loading & error boxes */
+.loading-container,
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}

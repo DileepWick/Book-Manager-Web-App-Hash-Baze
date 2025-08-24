@@ -1,0 +1,73 @@
+
+
+/* Toolbar layout */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+/* Brand title */
+.brand {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* Navigation links container */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Navigation buttons */
+.navButton {
+  color: #fff;
+  text-transform: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.navButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* User info box */
+.userBox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Username text */
+.username {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Logout button */
+.logoutButton,
+.loginButton {
+  color: #fff;
+  border-color: #fff;
+  text-transform: none;
+  font-weight: 500;
+  padding: 4px 24px;
+}
+
+.logoutButton:hover,
+.loginButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logoutButton:disabled {
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Spinner inside buttons or header */
+.loadingSpinner {
+  color: #fff;
+}
