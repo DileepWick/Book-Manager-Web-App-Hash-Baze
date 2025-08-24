@@ -84,7 +84,7 @@ This application provides a complete solution for managing books with user authe
 
 1. Clone the repository:
    ```bash
-   git clone 
+   git clone https://github.com/DileepWick/Book-Manager-Web-App-Hash-Baze.git
    cd book-management-app
    ```
 
