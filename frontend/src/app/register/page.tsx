@@ -15,7 +15,7 @@ import {
 import Header from "../components/header";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import "./styles.css"; 
+import "./styles.css";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -46,14 +46,27 @@ export default function RegisterPage() {
     },
   });
 
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errors: { [key: string]: string } = {};
 
-    if (!formState.username) errors.username = "Username is required";
-    if (!formState.password) errors.password = "Password is required";
-    if (formState.password !== formState.confirmPassword)
+    // Username validation
+    if (!formState.username) {
+      errors.username = "Username is required";
+    }
+
+    // Password validation
+    if (!formState.password) {
+      errors.password = "Password is required";
+    } else if (formState.password.length < 6) {
+      errors.password = "Password must be at least 6 characters long";
+    }
+
+    // Confirm password validation
+    if (formState.password !== formState.confirmPassword) {
       errors.confirmPassword = "Passwords do not match";
+    }
 
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors);
@@ -62,7 +75,12 @@ export default function RegisterPage() {
 
     setFieldErrors({});
     setGeneralError(null);
-    registerUser({ variables: { input: { username: formState.username, password: formState.password } } });
+
+    registerUser({
+      variables: {
+        input: { username: formState.username, password: formState.password },
+      },
+    });
   };
 
   return (
@@ -74,8 +92,16 @@ export default function RegisterPage() {
             Create Account
           </Typography>
 
-          {generalError && <Alert severity="error" className="alert">{generalError}</Alert>}
-          {successMessage && <Alert severity="success" className="alert">{successMessage}</Alert>}
+          {generalError && (
+            <Alert severity="error" className="alert">
+              {generalError}
+            </Alert>
+          )}
+          {successMessage && (
+            <Alert severity="success" className="alert">
+              {successMessage}
+            </Alert>
+          )}
 
           <form onSubmit={handleSubmit} className="register-form">
             <TextField
@@ -85,7 +111,9 @@ export default function RegisterPage() {
               value={formState.username}
               error={!!fieldErrors.username}
               helperText={fieldErrors.username || ""}
-              onChange={(e) => setFormState({ ...formState, username: e.target.value })}
+              onChange={(e) =>
+                setFormState({ ...formState, username: e.target.value })
+              }
             />
             <TextField
               label="Password"
@@ -95,7 +123,9 @@ export default function RegisterPage() {
               value={formState.password}
               error={!!fieldErrors.password}
               helperText={fieldErrors.password || ""}
-              onChange={(e) => setFormState({ ...formState, password: e.target.value })}
+              onChange={(e) =>
+                setFormState({ ...formState, password: e.target.value })
+              }
             />
             <TextField
               label="Confirm Password"
@@ -105,7 +135,9 @@ export default function RegisterPage() {
               value={formState.confirmPassword}
               error={!!fieldErrors.confirmPassword}
               helperText={fieldErrors.confirmPassword || ""}
-              onChange={(e) => setFormState({ ...formState, confirmPassword: e.target.value })}
+              onChange={(e) =>
+                setFormState({ ...formState, confirmPassword: e.target.value })
+              }
             />
 
             <Button
