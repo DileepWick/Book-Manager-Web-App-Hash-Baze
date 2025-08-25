@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class UserService {
+  // In-memory database for users
   private users: User[] = [];
 
   // Register a new user

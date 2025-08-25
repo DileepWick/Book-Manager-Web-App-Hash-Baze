@@ -1,7 +1,9 @@
+// Response from login mutation
 interface LoginMutationResult {
-  login: string; // JWT token returned by your backend
+  login: string; 
 }
 
+// Variables for login mutation
 interface LoginMutationVars {
   input: {
     username: string;
@@ -25,6 +27,12 @@ interface RegisterMutationVars {
   };
 }
 
+// Response from logout mutation
+interface LogoutMutationResult {
+  logout: boolean;
+}
+
+
 // Response from "me" query
 interface MeQueryResult {
   me: {
@@ -32,10 +40,3 @@ interface MeQueryResult {
     username: string;
   } | null;
 }
-
-// Response from logout mutation
-interface LogoutMutationResult {
-  logout: boolean;
-}
-
-

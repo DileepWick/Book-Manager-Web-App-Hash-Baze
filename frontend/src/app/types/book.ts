@@ -1,3 +1,4 @@
+// Type definitions for Book entity
 export interface Book {
   id: string; // add type here
   title: string;
@@ -6,6 +7,7 @@ export interface Book {
   genre: string;
 }
 
+// Input type for creating or updating a book
 export interface BookInput {
   title: string;
   author: string;

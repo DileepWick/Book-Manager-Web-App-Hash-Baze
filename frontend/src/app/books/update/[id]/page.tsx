@@ -16,16 +16,14 @@ import {
 } from "@mui/material";
 import Header from "../../../components/header";
 import AuthGuard from "../../../components/authGuard";
-import '../../styles/UpdateBook.css';
+import "../../styles/UpdateBook.css";
 
 export default function UpdateBookPage() {
   const { id } = useParams();
   const router = useRouter();
   const currentYear = new Date().getFullYear();
-
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-
   const [formState, setFormState] = useState<BookInput>({
     title: "",
     author: "",
@@ -33,16 +31,19 @@ export default function UpdateBookPage() {
     genre: "",
   });
 
+  // Query to fetch book details
   const { data, loading, error } = useQuery<{ book: Book }>(GET_BOOK, {
     variables: { id },
     skip: !id,
   });
 
+  // Mutation to update book details
   const [updateBook, { loading: updating }] = useMutation(UPDATE_BOOK, {
     onCompleted: () => setSuccessMessage("Book updated successfully!"),
     onError: (err) => setErrorMessage(err.message),
   });
 
+  // Populate form when data is fetched
   useEffect(() => {
     if (data?.book) {
       setFormState({
@@ -54,6 +55,7 @@ export default function UpdateBookPage() {
     }
   }, [data]);
 
+  // Show loading or error message
   if (loading)
     return (
       <Box className="loading-container">
@@ -61,6 +63,7 @@ export default function UpdateBookPage() {
       </Box>
     );
 
+  // Show error message
   if (error)
     return (
       <>
@@ -71,6 +74,7 @@ export default function UpdateBookPage() {
       </>
     );
 
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -164,7 +168,10 @@ export default function UpdateBookPage() {
             type="number"
             value={formState.publishedYear}
             onChange={(e) =>
-              setFormState({ ...formState, publishedYear: Number(e.target.value) })
+              setFormState({
+                ...formState,
+                publishedYear: Number(e.target.value),
+              })
             }
             className="update-input"
           />

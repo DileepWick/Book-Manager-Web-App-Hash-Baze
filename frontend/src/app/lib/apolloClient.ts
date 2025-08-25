@@ -8,7 +8,7 @@ const httpLink = new HttpLink({
 
 // Apollo Client
 const client = new ApolloClient({
-  link: httpLink, // no need for authLink with cookies
+  link: httpLink, 
   cache: new InMemoryCache(),
 });
 

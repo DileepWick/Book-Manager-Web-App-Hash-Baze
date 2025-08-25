@@ -47,21 +47,23 @@ export default function BooksPage() {
 
   const booksPerPage = 5;
 
+  // Query to fetch all books
   const { data, loading, error } = useQuery<{ books: Book[] }>(GET_BOOKS, {
-    fetchPolicy: "network-only",
-    context: { credentials: "include" },
+    fetchPolicy: "network-only"
   });
 
+  // Mutation to delete a book
   const [deleteBook] = useMutation(DELETE_BOOK, {
     refetchQueries: [{ query: GET_BOOKS }],
-    context: { credentials: "include" },
   });
 
+  // Open confirmation dialog
   const handleDeleteClick = (id: string) => {
     setBookToDelete(id);
     setConfirmDialogOpen(true);
   };
 
+  // Confirm book deletion
   const handleConfirmDelete = async () => {
     if (!bookToDelete) return;
     try {
@@ -77,14 +79,20 @@ export default function BooksPage() {
     }
   };
 
+  // Cancel book deletion
   const handleCancelDelete = () => {
     setConfirmDialogOpen(false);
     setBookToDelete(null);
   };
 
+  // Navigation handlers
   const handleUpdate = (id: string) => router.push(`/books/update/${id}`);
   const handleView = (id: string) => router.push(`/books/view/${id}`);
+
+  // Pagination handler
   const handlePageChange = (_e: any, value: number) => setPage(value);
+
+  // Snackbar close handler
   const handleCloseSnackbar = () => setShowSnackbar(false);
 
   const books = data?.books ?? [];

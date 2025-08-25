@@ -8,6 +8,8 @@ import { UseGuards } from '@nestjs/common';
 
 @Resolver(() => User)
 export class AuthResolver {
+
+  // Inject services
   constructor(
     private readonly authService: AuthService,
     private readonly userService: UserService,

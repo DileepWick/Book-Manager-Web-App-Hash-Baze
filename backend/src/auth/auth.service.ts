@@ -4,6 +4,7 @@ import { User } from '../user/user.model';
 
 @Injectable()
 export class AuthService {
+  // Inject JWT service
   constructor(private readonly jwtService: JwtService) {}
 
   // Generate JWT for a user

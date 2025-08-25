@@ -19,11 +19,13 @@ import "../../styles/ViewBook.css";
 export default function ViewBookPage() {
   const { id } = useParams();
 
+  // Query to fetch book details
   const { data, loading, error } = useQuery<{ book: Book }>(GET_BOOK, {
     variables: { id },
     skip: !id,
   });
 
+  // Show loading or error message
   if (loading)
     return (
       <Box className="view-loading-container">
@@ -31,6 +33,7 @@ export default function ViewBookPage() {
       </Box>
     );
 
+    // Show error if fetching book fails
   if (error)
     return (
       <>
@@ -41,6 +44,7 @@ export default function ViewBookPage() {
       </>
     );
 
+  // Show message if book not found
   if (!data?.book)
     return (
       <>
@@ -51,6 +55,7 @@ export default function ViewBookPage() {
       </>
     );
 
+  // Destructure book data
   const book = data.book;
 
   return (

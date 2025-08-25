@@ -14,16 +14,15 @@ import {
 } from "@mui/material";
 import "./styles/Header.css";
 
-type MeQueryResult = {
-  me: { username: string } | null;
-};
 
 export default function Header() {
   const router = useRouter();
   const [username, setUsername] = useState<string | null>(null);
 
+  // Query to fetch user details
   const { data, loading } = useQuery<MeQueryResult>(ME_QUERY);
 
+  // Mutation for logout
   const [logout, { loading: loggingOut }] = useMutation(LOGOUT, {
     onCompleted: () => {
       setUsername(null);
@@ -33,6 +32,7 @@ export default function Header() {
     onError: (err) => console.error("Logout failed", err),
   });
 
+  // Update username when data changes
   useEffect(() => {
     if (!loading) setUsername(data?.me?.username || null);
   }, [data, loading]);

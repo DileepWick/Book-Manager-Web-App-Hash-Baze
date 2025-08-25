@@ -16,19 +16,19 @@ import {
 } from "@mui/material";
 import './styles/AuthGuard.css';
 
-type MeQueryResult = {
-  me: { username: string } | null;
-};
+
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
   const [showDialog, setShowDialog] = useState(false);
 
+  // GraphQL query to check if user is authenticated
   const { data, loading, error } = useQuery<MeQueryResult>(ME_QUERY, {
     fetchPolicy: "network-only",
   });
 
+  // Redirect to login if not authenticated
   useEffect(() => {
     if (!loading) {
       if (data?.me?.username) {
@@ -41,6 +41,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     }
   }, [data, loading, router]);
 
+  // Show dialog if there's an error
   useEffect(() => {
     if (error) {
       setShowDialog(true);

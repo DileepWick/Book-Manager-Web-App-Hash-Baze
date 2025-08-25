@@ -15,8 +15,7 @@ import {
 import Header from "../components/header";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-import "./styles.css"; // vanilla CSS import
+import "./styles.css"; 
 
 export default function RegisterPage() {
   const router = useRouter();

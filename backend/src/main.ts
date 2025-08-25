@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 dotenv.config();
 
 async function bootstrap() {
+  // Create NestJS app
   const app = await NestFactory.create(AppModule);
 
   // Enable cookies
@@ -14,7 +15,7 @@ async function bootstrap() {
   // Enable CORS and allow credentials so cookies work
   app.enableCors({
     origin: process.env.CLIENT_URL || 'http://localhost:3000', // front-end URL
-    credentials: true, // very important for cookies
+    credentials: true, 
   });
 
   const port = process.env.PORT || 5000;

@@ -23,6 +23,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  // GraphQL mutation for login
   const [login] = useMutation(LOGIN, {
     onError: (err) => setErrorMessage(err.message),
     onCompleted: () => {
@@ -34,6 +35,7 @@ export default function LoginPage() {
     },
   });
 
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!username || !password) {

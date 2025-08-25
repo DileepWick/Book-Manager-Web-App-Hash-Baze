@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState , FormEvent} from "react";
 import { useMutation } from "@apollo/client/react";
 import { CREATE_BOOK } from "../../graphql/books";
 import {
@@ -26,6 +26,7 @@ export default function NewBookPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
+  // Mutation to create a new book
   const [createBook, { loading }] = useMutation(CREATE_BOOK, {
     onError: (err) => {
       setErrorMessage(err.message);
@@ -41,7 +42,8 @@ export default function NewBookPage() {
     },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Form submission handler
+  const handleSubmit = (e:FormEvent) => {
     e.preventDefault();
     if (!title || !author || !publishedYear || !genre) {
       setErrorMessage("All fields are required.");
@@ -61,6 +63,7 @@ export default function NewBookPage() {
     });
   };
 
+  // Close alert handler
   const closeAlert = () => {
     setSuccessMessage(null);
     setErrorMessage(null);

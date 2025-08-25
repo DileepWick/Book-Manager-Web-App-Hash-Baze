@@ -1,8 +1,16 @@
 "use client";
 
-import { Box, Typography, Paper, Stack, List, ListItem, ListItemText } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Paper,
+  Stack,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 import Header from "./components/header";
-import './styles/Home.css';
+import "./styles/Home.css";
 
 export default function Home() {
   return (
@@ -34,7 +42,6 @@ export default function Home() {
                 <ListItemText primary="Delete books from your collection." />
               </ListItem>
             </List>
-
             <Typography variant="body2" className="home-footer">
               Use the navigation above to get started.
             </Typography>
